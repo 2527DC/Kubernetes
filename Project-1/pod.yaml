@@ -1,7 +1,0 @@
-version: app/v1
-kind: pod
-metadata:
-  name: frontendpod
-  labels:
-    app: frontend-app
-    type: main-frontend
