@@ -6,11 +6,17 @@ cluster , node , pod --->(differences)
 - The Namespace in the kubereneties refers as the logical (virtual) boundary and the scope of this namespace is pod level
   which helps to secrigation and making isolated environament for the resources
 
-Deployements
-Replicaset
-Rolebackupdates
-Labels and Selectors
-replicaset vs Statefulset vs Deployement
+# Core Concepts
+
+- Labels and Selectors , Architecture
+
+# Workloads
+
+- Deployements
+- Replicaset
+- Rolebackupdates
+
+- replicaset vs Statefulset vs Deployement
 
 Statefull set is the set which maintains the state of the pods
 Deamon Set
@@ -19,6 +25,42 @@ Storage:
 Storage Clasess
 persistent storage
 persistent claim storage
+
+# Netwoeking
+
+- cluster networking , Service , Ingress , Network Police
+
+# Storage
+
+- PV , PVC , Storage Clasess, config manps , secrets
+
+# Scaling and Scheduling
+
+- HPA , VPA, Node Affinity, Taints /tolarance , Resource Quotas , Limits , Probes
+
+# Cluster Administration
+
+- RBAC , cluster updates , Custom update Definetion ( CRD's)
+
+# Monitoring and Logging
+
+- tools , Metric server , logging
+
+# Security
+
+- Pod Security Standards (PSS ) , Image Scanning , Network Policies , Secrets Encryption
+
+# Cloud Native Kuberenties
+
+- Manage Services ( EKS , AKS , GKE) , Cluster Auto Scaler , Spot / Preemtible Node
+
+# Debugging And trouble Shooting
+
+- kubectl Debugging ,Logs, Resource Usage Analystic
+
+# Advance Feature
+
+- Operators , Helm, Service Mesh , kubernenties Api
 
 # Side Car
 

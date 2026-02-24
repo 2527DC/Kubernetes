@@ -3,3 +3,5 @@
 # Traefic for Ingress
 
 -> traefic vs nginx
+
+# Annotations -> ingress
