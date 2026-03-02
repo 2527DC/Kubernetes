@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: backend-pod
+  namespace: dev
+  labels:
+    app: backend
+spec:
+  containers:
+    - name: user-service-local
+      image: user-service:latest
+      imagePullPolicy: Never # Changed from IfNotPresent to Never
+      ports:
+        - containerPort: 4000
+      envFrom:
+        - configMapRef:
+            name: user-service-config

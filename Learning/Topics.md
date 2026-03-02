@@ -12,23 +12,11 @@ cluster , node , pod --->(differences)
 
 # Workloads
 
-- Deployements
-- Replicaset
-- Rolebackupdates
-
-- replicaset vs Statefulset vs Deployement
-
-Statefull set is the set which maintains the state of the pods
-Deamon Set
-Jobs , cron jobs
-Storage:
-Storage Clasess
-persistent storage
-persistent claim storage
+- Deployements ,Replicaset ,Rolebackupdates ,replicaset vs Statefulset vs Deployement
 
 # Netwoeking
 
-- cluster networking , Service , Ingress , Network Police
+- cluster networking , Service , Ingress , Network Police , GateWay Api
 
 # Storage
 
@@ -40,7 +28,7 @@ persistent claim storage
 
 # Cluster Administration
 
-- RBAC , cluster updates , Custom update Definetion ( CRD's)
+- RBAC , cluster updates , Custom Resource Definetion ( CRD's)
 
 # Monitoring and Logging
 

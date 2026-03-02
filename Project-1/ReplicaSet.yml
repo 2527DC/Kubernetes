@@ -1,0 +1,4 @@
+kind: ReplicaSet
+apiVersion: v1
+metadata:
+  name: frontend-pod-replica-set
