@@ -6,10 +6,19 @@ metadata:
   labels:
     app: backend
 spec:
+  initContainers: # Fixed: should be plural "initContainers"
+    - name: database-migration #
+      image: user-service:latest
+      imagePullPolicy: Never # Add this since you're using local image
+      command: ["sh", "-c"] # Fixed: proper command syntax
+      args: ["npx prisma migrate deploy"] # The actual command to run
+      envFrom: # Add envFrom so migration has access to DB credentials
+        - configMapRef:
+            name: user-service-config
   containers:
     - name: user-service-local
       image: user-service:latest
-      imagePullPolicy: Never # Changed from IfNotPresent to Never
+      imagePullPolicy: Never
       ports:
         - containerPort: 4000
       envFrom:

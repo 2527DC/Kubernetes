@@ -4,7 +4,7 @@ metadata:
   name: user-service-config
   namespace: dev
 data:
-  DATABASE_URL: postgresql://postgres:root@host.docker.internal:5432/microdb?schema=user_service
+  DATABASE_URL: postgresql://postgres:root@host.docker.internal:5432/kubmicro?schema=user_service
   JWT_REFRESH_SECRET: your_super_secret_refresh_token_key_here
   JWT_SECRET: your_super_secret_access_token_key_here
   PORT: "4000"

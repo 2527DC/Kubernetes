@@ -7,3 +7,5 @@
 # Q4 Is ingress or any ingress controller a network layer Implementation or Application layer Implementation and same for Proxying
 
 # Where does the ingress controller runs is it a part of the kubeneties controle plane
+
+# Q5

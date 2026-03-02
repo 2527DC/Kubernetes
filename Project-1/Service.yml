@@ -1,7 +1,27 @@
-kind: Service
+# Get your local IP
+export HOST_IP=$(ipconfig getifaddr en0)
+echo "Your host IP is: $HOST_IP"
+
+# Create the service with your IP
+cat <<EOF | kubectl apply -f -
 apiVersion: v1
+kind: Service
 metadata:
-  name: frontend-pod-service
+  name: host-postgres
+  namespace: dev
 spec:
-  type: ClusterIP
-  selector: frontend-pod
+  ports:
+    - port: 5432
+      targetPort: 5432
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: host-postgres
+  namespace: dev
+subsets:
+  - addresses:
+      - ip: $HOST_IP
+    ports:
+      - port: 5432
+EOF
