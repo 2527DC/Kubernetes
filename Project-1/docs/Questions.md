@@ -1,0 +1,3 @@
+- How to u see the Containe log in the Running pod
+- In Kubernetes, how can I make vertical pod scaling manual and automatically?
+- What is the Difference detween the replica and the scalling what is the use of replica how does it heps explain with example

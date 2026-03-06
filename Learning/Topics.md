@@ -55,3 +55,5 @@ cluster , node , pod --->(differences)
 - It is the extra container in the same pod where the aplication stays where it helps in different situations
   ex -> the application generates a log in its aplication file and if u want it as and keeping it as standard levaraging way then
   u make this side car container to read it and share them to some monitoring system
+
+# In-Place Pod Vertical Scaling -> in new Version of Kuberneties
