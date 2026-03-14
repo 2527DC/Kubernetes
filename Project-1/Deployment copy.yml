@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: user-service-deployment
+  label:
+    app: backend-user-service
+spec:
+  replicas: 2
+  resource:
+    request:
+      cpu: 250m
+      memory: 100 mb
+    limit:
+      cpu: 500m
+      memory: 100mb
+  initContainers:
+    name: user-service-migration
+    image: user-service:latest
+    command: ["sh", "-c", "npx prisma migrate deploy"]
+    envFrom:
+      - configMapRef:
+          name: user-service-config
+  containers:
+    - name: user-service-container
+      image: user-service:latest
+      envFrom:
+        - configMapRef:
+            name: user-service-config

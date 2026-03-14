@@ -1,17 +1,40 @@
-1 -> I have a Fiel of secrets or config map and if we want to change those How is it handles
+# Kubernetes Scenario Questions
 
-- using Cloud secrets
+## Scenario 1: Handling Secrets and ConfigMap Changes
+
+**Question:** I have a set of secrets or ConfigMaps, and if we want to change those, how is it handled?
+
+**Options:**
+- Using Cloud secrets
 - Manual changes
 - Automatic changes
 
-2Q -> when i use the init container for the side workd what if the init container fails i think
-it will go inio loop how to handle those things
+---
 
-# What is the Difference detween the replica and the scalling what is the use of replica how does it heps explain with example
+## Scenario 2: Init Container Failure Handling
 
-- Answere : replica in k8s is the no of pod running initially after the deployment but the scalling is handled based on the metric like usage of memory and cpus and req limit
-- The replica is used for the availability example
-  **See when u dont use the Replica:**
-  -> If the node crash where ur pod is running then untill the another node creation by scaller the aplciation is not availabel if u have two replica which are in 2 nodes if one node gets down then the other pod that is running on the other node will still remains available
+**Question:** When I use an init container for side work, what if the init container fails? I think it will go into a loop. How do we handle those scenarios?
 
-doubt -> If i have more than one pod of replicas how handles spliting the trafic will both be handling the trafic or only one of them will recive the req and how does this happens like one of the pod get crash and how the trafic are redirected or how the req reaches the another pod of the replica
+---
+
+## Scenario 3: Replicas vs Scaling
+
+**Question:** What is the difference between replicas and scaling? What is the use of replicas, and how does it help? Explain with an example.
+
+**Answer:**
+
+Replicas in Kubernetes refer to the number of pod instances running initially after the deployment. Scaling, on the other hand, is handled based on metrics like memory usage, CPU usage, and request limits.
+
+**The use of replicas for availability:**
+
+Consider this scenario - when you do not use replicas:
+- If the node crashes where your pod is running, the application will not be available until another node is created by the autoscaler.
+
+When you have two replicas running on two different nodes:
+- If one node goes down, the pod running on the other node will still remain available, ensuring high availability.
+
+---
+
+## Scenario 4: Traffic Handling with Multiple Replicas
+
+**Question:** If I have more than one pod of replicas, how is traffic splitting handled? Will both be handling the traffic, or will only one of them receive the requests? How does this happen? If one of the pods crashes, how is traffic redirected, and how do requests reach another pod in the replica set?
