@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Argocd
+metadata:
+  - name: cluster-1-argocd
+    namespace: argocd
+spec:
+  project: default
+  source:
