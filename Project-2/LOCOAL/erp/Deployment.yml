@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: erp-deployment
+  namespace: erp-dev
+  labels:
+    app: erp-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: erp-app
+  template: # ← This was missing!
+    metadata:
+      name: erp-pod
+      labels:
+        app: erp-app
+    spec:
+      containers:
+        - name: erp-dev-container
+          image: chethan2527/erp:v1
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "100Mi"
+            limits:
+              cpu: "500m"
+              memory: "100Mi"
+          envFrom:
+            - configMapRef:
+                name: erp-configmap
