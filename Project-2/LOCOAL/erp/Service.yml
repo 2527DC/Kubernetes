@@ -9,5 +9,5 @@ spec:
     app: erp-app
   ports:
     - port: 80
-      targetPort: 80 # Changed from 8000 to 80
+      targetPort: 80
       nodePort: 30081
