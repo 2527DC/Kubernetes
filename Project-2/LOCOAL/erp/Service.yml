@@ -8,6 +8,6 @@ spec:
   selector:
     app: erp-app
   ports:
-    - port: 80 # Service port
-      targetPort: 8000 # Container port (changed from 8000 to 80)
-      nodePort: 30081 # External access port
+    - port: 80
+      targetPort: 80 # Changed from 8000 to 80
+      nodePort: 30081

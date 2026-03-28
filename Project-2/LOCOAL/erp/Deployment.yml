@@ -10,7 +10,7 @@ spec:
   selector:
     matchLabels:
       app: erp-app
-  template: # ← This was missing!
+  template:
     metadata:
       name: erp-pod
       labels:
