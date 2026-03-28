@@ -1,4 +1,34 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  - name:
+  name: ets-user-service-deployment
+  namespace: ets-dev
+  labels:
+    app: ets-user-service
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: ets-user-service
+    metadata:
+      name: ets-dev-pod
+      labels:
+        app: ets-user-service
+
+  spec:
+    containers:
+      - name: ets-user-service-container
+        image: chethan2527/user-service:latest
+
+        resources:
+          requests:
+            cpu: "250m"
+            memory: "100Mi"
+          limits:
+            cpu: "500m"
+            memory: "100Mi"
+        envFrom:
+          - configMapRef:
+              name: ets-user-service-config

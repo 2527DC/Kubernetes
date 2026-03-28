@@ -28,7 +28,8 @@ kubectl cluster-info
 ```
 
 **Scenario:** Verify that kubectl is properly configured and can communicate with the cluster.
-> *"Verify:"* [Core-hands-On.md - Task 0 - Setup Local Cluster](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=3.%20Verify%3A,58)
+
+> _"Verify:"_ [Core-hands-On.md - Task 0 - Setup Local Cluster](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=3.%20Verify%3A,58)
 
 ### Get Nodes
 
@@ -37,7 +38,8 @@ kubectl get nodes
 ```
 
 **Scenario:** Check which nodes are available in the cluster and their status.
-> *"Which node is acting as Control Plane?"* [Core-hands-On.md - Task 0 - Setup Local Cluster](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=Which%20node%20is%20acting%20as%20Control%20Plane)
+
+> _"Which node is acting as Control Plane?"_ [Core-hands-On.md - Task 0 - Setup Local Cluster](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=Which%20node%20is%20acting%20as%20Control%20Plane)
 
 ### Get System Pods
 
@@ -46,7 +48,8 @@ kubectl get pods -n kube-system
 ```
 
 **Scenario:** View pods running in the kube-system namespace to check core components.
-> *"Can you see etcd running? Try:"* [Core-hands-On.md - Task 0 - Setup Local Cluster](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=Can%20you%20see%20etcd%20running)
+
+> _"Can you see etcd running? Try:"_ [Core-hands-On.md - Task 0 - Setup Local Cluster](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=Can%20you%20see%20etcd%20running)
 
 ### Create a Cluster (kind)
 
@@ -55,7 +58,8 @@ kind create cluster --name dev-cluster
 ```
 
 **Scenario:** Create a local Kubernetes cluster using kind for development.
-> *"Create a cluster:"* [Core-hands-On.md - Task 0 - Setup Local Cluster](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=2.%20Create%20a%20cluster)
+
+> _"Create a cluster:"_ [Core-hands-On.md - Task 0 - Setup Local Cluster](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=2.%20Create%20a%20cluster)
 
 ---
 
@@ -68,7 +72,8 @@ kubectl run pod-nginx --image=nginx:latest --labels=app=nginx_app
 ```
 
 **Scenario:** Create a simple nginx pod with specific labels.
-> *"Create a Pod named pod-nginx with image nginx:latest"* [Kode_kube.md - Task](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Kode_kube.md#:~:text=1.%20Create%20a%20Pod%20named)
+
+> _"Create a Pod named pod-nginx with image nginx:latest"_ [Kode_kube.md - Task](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Kode_kube.md#:~:text=1.%20Create%20a%20Pod%20named)
 
 ### Get Pods
 
@@ -77,7 +82,8 @@ kubectl get pods
 ```
 
 **Scenario:** List all pods in the current namespace.
-> *"Verify:"* [Core-hands-On.md - Scenario 1](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=2.%20Verify,58)
+
+> _"Verify:"_ [Core-hands-On.md - Scenario 1](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=2.%20Verify,58)
 
 ### Get Pods with Wide Output
 
@@ -86,7 +92,8 @@ kubectl get pods -o wide
 ```
 
 **Scenario:** View pods with additional details like node assignment.
-> *"kubectl get pods -o wide"* [Core-hands-On.md - Scenario 1](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=2.%20Verify,58)
+
+> _"kubectl get pods -o wide"_ [Core-hands-On.md - Scenario 1](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=2.%20Verify,58)
 
 ### Get Pods in All Namespaces
 
@@ -111,7 +118,8 @@ kubectl delete pod <pod-name>
 ```
 
 **Scenario:** Remove a specific pod from the cluster.
-> *"Delete pod and observe behavior"* [Core-hands-On.md - Final Challenge](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=Delete%20PVC%20and%20observe%20behavior)
+
+> _"Delete pod and observe behavior"_ [Core-hands-On.md - Final Challenge](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=Delete%20PVC%20and%20observe%20behavior)
 
 ### Execute Command in Pod
 
@@ -156,7 +164,8 @@ kubectl apply -f <file.yaml>
 ```
 
 **Scenario:** Create or update resources from a YAML manifest file.
-> *"kubectl apply -f app.yaml"* [Core-hands-On.md - Architecture Understanding](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=kubectl%20apply%20-f%20app.yaml)
+
+> _"kubectl apply -f app.yaml"_ [Core-hands-On.md - Architecture Understanding](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=kubectl%20apply%20-f%20app.yaml)
 
 ### Get Deployments
 
@@ -189,7 +198,8 @@ kubectl scale deployment <name> --replicas=<count>
 ```
 
 **Scenario:** Change the number of replicas for a deployment.
-> *"Scale to 5 replicas."* [Core-hands-On.md - Scenario 1](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=3.%20Scale%20to%205%20replicas)
+
+> _"Scale to 5 replicas."_ [Core-hands-On.md - Scenario 1](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=3.%20Scale%20to%205%20replicas)
 
 ### Set Deployment Image
 
@@ -198,7 +208,8 @@ kubectl set image deployment/<name> <container>=<image>
 ```
 
 **Scenario:** Update the container image for a deployment.
-> *"Update image version."* [Core-hands-On.md - Scenario 1](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=4.%20Update%20image%20version)
+
+> _"Update image version."_ [Core-hands-On.md - Scenario 1](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=4.%20Update%20image%20version)
 
 ### Rollout Restart
 
@@ -207,7 +218,8 @@ kubectl rollout restart deployment/<name>
 ```
 
 **Scenario:** Trigger a rolling restart of a deployment without changing any configuration.
-> *"The rollout completed successfully"* [Port-forwording.md](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Port-forwording.md#:~:text=Then%20I%20updated%20the%20container%20image%20and%20performed%20a%20rollout)
+
+> _"The rollout completed successfully"_ [Port-forwording.md](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Port-forwording.md#:~:text=Then%20I%20updated%20the%20container%20image%20and%20performed%20a%20rollout)
 
 ### Check Rollout Status
 
@@ -244,7 +256,8 @@ kubectl expose deployment <name> --type=<type> --port=<port>
 ```
 
 **Scenario:** Create a service to expose a deployment.
-> *"Expose deployment using ClusterIP."* [Core-hands-On.md - Scenario 2](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=Task%20A%20%E2%80%93%20ClusterIP,1.%20Expose%20deployment%20using%20ClusterIP)
+
+> _"Expose deployment using ClusterIP."_ [Core-hands-On.md - Scenario 2](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=Task%20A%20%E2%80%93%20ClusterIP,1.%20Expose%20deployment%20using%20ClusterIP)
 
 ### Get Services
 
@@ -272,14 +285,14 @@ kubectl delete service <service-name>
 
 ### Service Types Reference
 
-| Type        | Command Flag              | Use Case                                    |
-|-------------|---------------------------|---------------------------------------------|
-| ClusterIP   | `--type=ClusterIP`        | Internal cluster communication              |
-| NodePort    | `--type=NodePort`         | External access via node ports              |
-| LoadBalancer| `--type=LoadBalancer`     | Cloud provider external load balancer       |
-| Headless    | `--clusterIP=None`         | StatefulSet direct pod discovery            |
+| Type         | Command Flag          | Use Case                              |
+| ------------ | --------------------- | ------------------------------------- |
+| ClusterIP    | `--type=ClusterIP`    | Internal cluster communication        |
+| NodePort     | `--type=NodePort`     | External access via node ports        |
+| LoadBalancer | `--type=LoadBalancer` | Cloud provider external load balancer |
+| Headless     | `--clusterIP=None`    | StatefulSet direct pod discovery      |
 
-> *"Access it from your browser."* [Core-hands-On.md - Scenario 2 - Task B](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=Task%20B%20%E2%80%93%20NodePort,1.%20Change%20service%20type%20to%20NodePort)
+> _"Access it from your browser."_ [Core-hands-On.md - Scenario 2 - Task B](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=Task%20B%20%E2%80%93%20NodePort,1.%20Change%20service%20type%20to%20NodePort)
 
 ---
 
@@ -292,7 +305,8 @@ kubectl create namespace <name>
 ```
 
 **Scenario:** Create a new namespace for environment isolation.
-> *"Create namespaces:"* [Core-hands-On.md - Scenario 8](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=1.%20Create%20namespaces)
+
+> _"Create namespaces:"_ [Core-hands-On.md - Scenario 8](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=1.%20Create%20namespaces)
 
 ### Get Namespaces
 
@@ -353,7 +367,8 @@ kubectl label deployment <name> tier=<value>
 ```
 
 **Scenario:** Add or update labels on a deployment.
-> *"Create 2 frontend pods (label: tier=frontend)"* [Core-hands-On.md - Scenario 7](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=1.%20Create%202%20frontend%20pods)
+
+> _"Create 2 frontend pods (label: tier=frontend)"_ [Core-hands-On.md - Scenario 7](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=1.%20Create%202%20frontend%20pods)
 
 ### Annotate a Resource
 
@@ -374,7 +389,8 @@ kubectl port-forward pod/<pod-name> <local-port>:<pod-port>
 ```
 
 **Scenario:** Access a pod's ports from your local machine for debugging.
-> *"kubectl port-forward svc/sample-data-service 8080:80 -n dev"* [Port-forwording.md](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Port-forwording.md#:~:text=kubectl%20port-forward%20svc)
+
+> _"kubectl port-forward svc/sample-data-service 8080:80 -n dev"_ [Port-forwording.md](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Port-forwording.md#:~:text=kubectl%20port-forward%20svc)
 
 ### Port Forward to Service
 
@@ -383,7 +399,8 @@ kubectl port-forward svc/<service-name> <local-port>:<service-port>
 ```
 
 **Scenario:** Forward traffic to a service for local testing.
-> *"Access the application again from the browser"* [Port-forwording.md](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Port-forwording.md#:~:text=However,%20when%20I%20tried%20to%20access%20the%20application%20again%20from%20the%20browser)
+
+> _"Access the application again from the browser"_ [Port-forwording.md](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Port-forwording.md#:~:text=However,%20when%20I%20tried%20to%20access%20the%20application%20again%20from%20the%20browser)
 
 ### Copy Files to/from Pod
 
@@ -438,7 +455,8 @@ kubectl create -f pv.yaml
 ```
 
 **Scenario:** Create a PersistentVolume for persistent storage.
-> *"Create a PersistentVolume (hostPath)"* [Core-hands-On.md - Scenario 5](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=1.%20Create%20a%20PersistentVolume)
+
+> _"Create a PersistentVolume (hostPath)"_ [Core-hands-On.md - Scenario 5](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=1.%20Create%20a%20PersistentVolume)
 
 ### Get PersistentVolumes
 
@@ -472,7 +490,8 @@ kubectl delete pvc <name>
 ```
 
 **Scenario:** Remove a PVC and observe behavior when deleted.
-> *"Delete PVC and observe behavior"* [Core-hands-On.md - Final Challenge](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=Delete%20PVC%20and%20observe%20behavior)
+
+> _"Delete PVC and observe behavior"_ [Core-hands-On.md - Final Challenge](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=Delete%20PVC%20and%20observe%20behavior)
 
 ---
 
@@ -493,7 +512,8 @@ kubectl exec -it <pod> -- nslookup <service-name>
 ```
 
 **Scenario:** Verify DNS resolution for a service.
-> *"Observe DNS entries"* [Core-hands-On.md - Scenario 2 - Task C](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=2.%20Observe%20DNS%20entries)
+
+> _"Observe DNS entries"_ [Core-hands-On.md - Scenario 2 - Task C](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=2.%20Observe%20DNS%20entries)
 
 ### Test Service Connectivity
 
@@ -502,7 +522,8 @@ kubectl run test --image=busybox -it --rm -- sh
 ```
 
 **Scenario:** Create a temporary pod to test service connectivity.
-> *"Create another test pod:"* [Core-hands-On.md - Scenario 2 - Task A](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=2.%20Create%20another%20test%20pod)
+
+> _"Create another test pod:"_ [Core-hands-On.md - Scenario 2 - Task A](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=2.%20Create%20another%20test%20pod)
 
 ### Curl from Pod
 
@@ -511,7 +532,8 @@ kubectl exec -it <pod> -- curl <service-name>
 ```
 
 **Scenario:** Test HTTP connectivity to a service from within a pod.
-> *"Curl service DNS:"* [Core-hands-On.md - Scenario 2 - Task A](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=3.%20Curl%20service%20DNS)
+
+> _"Curl service DNS:"_ [Core-hands-On.md - Scenario 2 - Task A](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=3.%20Curl%20service%20DNS)
 
 ### Get Ingress Resources
 
@@ -520,7 +542,8 @@ kubectl get ingress
 ```
 
 **Scenario:** List all ingress resources in the namespace.
-> *"Create ingress resource"* [Core-hands-On.md - Scenario 6](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=3.%20Create%20ingress%20resource)
+
+> _"Create ingress resource"_ [Core-hands-On.md - Scenario 6](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=3.%20Create%20ingress%20resource)
 
 ### Create Ingress
 
@@ -529,7 +552,8 @@ kubectl create ingress <name> --rule="path=service:port"
 ```
 
 **Scenario:** Create an ingress resource for HTTP routing.
-> *"curl localhost/app1"* [Core-hands-On.md - Scenario 6](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=4.%20Test%20using,curl%20localhost/app1)
+
+> _"curl localhost/app1"_ [Core-hands-On.md - Scenario 6](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=4.%20Test%20using,curl%20localhost/app1)
 
 ---
 
@@ -574,7 +598,8 @@ kubectl expose deployment <name> --selector=tier=frontend
 ```
 
 **Scenario:** Create a service that selects pods with specific labels.
-> *"Create a service selecting only frontend"* [Core-hands-On.md - Scenario 7](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=3.%20Create%20a%20service%20selecting%20only%20frontend)
+
+> _"Create a service selecting only frontend"_ [Core-hands-On.md - Scenario 7](#file:///Users/admin/Desktop/Learning/Kubernetes/Senario-Questions/Core-hands-On.md#:~:text=3.%20Create%20a%20service%20selecting%20only%20frontend)
 
 ---
 
@@ -620,11 +645,11 @@ kubectl delete service myapp
 
 ## File Reference Links
 
-| Scenario File | Description |
-|-------------|-------------|
-| [Core-hands-On.md](../Senario-Questions/Core-hands-On.md) | Hands-on practice with kind cluster |
+| Scenario File                                                 | Description                             |
+| ------------------------------------------------------------- | --------------------------------------- |
+| [Core-hands-On.md](../Senario-Questions/Core-hands-On.md)     | Hands-on practice with kind cluster     |
 | [Port-forwording.md](../Senario-Questions/Port-forwording.md) | Port forwarding and debugging scenarios |
-| [Kode_kube.md](../Senario-Questions/Kode_kube.md) | Pod creation tasks |
+| [Kode_kube.md](../Senario-Questions/Kode_kube.md)             | Pod creation tasks                      |
 
 ---
 
