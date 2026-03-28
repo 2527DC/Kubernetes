@@ -11,7 +11,7 @@ data:
   APP_ENV: "local"
   APP_DEBUG: "true"
   APP_TIMEZONE: "UTC"
-  APP_KEY: "base64:YOUR_GENERATED_KEY_HERE"
+  APP_KEY: "base64:l/0a7fA6FBBACDOShPl7G1CjfZOQli7qF1g0B2mPcIc="
   APP_URL: "http://localhost:8000"
 
   # Locale settings

@@ -1,12 +1,48 @@
-# Didnt used the init container for the runing the migration insted used the job to run the migration
+# Migration Strategy
 
-- i didnt use the init container for thr migratiion because when it is scalled i think the pod which are scalled tryes to run the migration too which is not necessary
+## Why I Used a Job Instead of Init Container for Migrations
 
-* the replicas are use to make the aplication available
+I chose to use a Kubernetes Job to run migrations instead of an Init Container because when the application is scaled, the scaled pods would also attempt to run migrations, which is unnecessary and could cause issues.
 
-- Implemented the Resource Quota( total resource that can be used by all the pod in the respected namespace ) and limiting range ( sets the minimun and maximun resource limit for the individual pod or container with a namespace )
-  --> use case of limiting range
-  eg if there is a name space were there is more than one pod which must need the same resourece and for the containers too same resource for all the container in the name space then we can create a saparare limit range kind yml and apply to the perticular namespace
+- Replicas are used to make the application highly available and scalable.
 
-* Question -> Like there will be no resource i the namespace but there will be a deployment wihch is used in the same namepace the what will happen will the pod be in the loop of ceation and tell me how it debuged is there any tooly which help me in the debugging thng like this
-  will thepod be in the loop of creation or will i be not able to create the diployment itself
+## Resource Management
+
+I implemented two important resource management features:
+
+### ResourceQuota
+Defines the total amount of resources that can be used by all pods in a namespace.
+
+### LimitRange
+Sets the minimum and maximum resource limits for individual pods or containers within a namespace.
+
+**Use Case:** If there is a namespace with multiple pods that need the same resources, and all containers in that namespace require identical resource allocations, you can create a separate LimitRange YAML and apply it to that namespace.
+
+## Question
+
+If there are no resource limits defined in a namespace but there is a Deployment using the same namespace, what happens? Will the pod be stuck in a creation loop? Or will the Deployment itself fail to create?
+
+How can this be debugged? Is there a tool to help diagnose issues like this?
+
+## Problems Encountered
+
+### Problem 1: Service Port Conflict
+Using the same target port in both the ERP and ETS services caused "site can't be reached" errors when listing applications via port forwarding.
+
+### Problem 2: 502 Bad Gateway Error
+After deploying the ERP project, I encountered a 502 Bad Gateway error. Initially, I couldn't determine the cause because running the container locally (outside the cluster) worked fine.
+
+**Debugging Steps:**
+1. I accessed the pod level and ran debugging commands inside the container.
+2. Commands used:
+   ```bash
+   php artisan tinker --execute="echo config('app.env');"
+   php artisan tinker --execute="echo config('database.connections.mysql.host');"
+   ```
+3. The AI suggested the issue was due to resource limits—the server was not able to run with the allocated resources.
+
+**Solution:**
+To check if pod resources are insufficient, use:
+```bash
+kubectl top pod -n erp-dev
+```
