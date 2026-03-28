@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: ets-user-service-config
-  namespace: dev
+  namespace: ets-dev
 data:
   DATABASE_URL: postgresql://postgres:root@host.docker.internal:5432/kubmicro?schema=user_service
   JWT_REFRESH_SECRET: your_super_secret_refresh_token_key_here
