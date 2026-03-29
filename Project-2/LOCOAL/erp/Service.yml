@@ -4,10 +4,9 @@ metadata:
   name: erp-app-service
   namespace: erp-dev
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: erp-app
   ports:
     - port: 80
       targetPort: 80
-      nodePort: 30081
