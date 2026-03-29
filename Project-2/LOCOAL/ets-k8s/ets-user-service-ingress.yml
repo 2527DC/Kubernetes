@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Ingress
+metadata:
+  name: ets-user-service-ingress
+  namespace: ets-dev
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: ets.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ets-user-service-svc
+                port:
+                  number: 80
