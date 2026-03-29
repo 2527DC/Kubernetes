@@ -28,4 +28,4 @@ template:
             memory: 150Mi
         envFrom:
           - configMapRef:
-            name: gym-app-config
+              name: gym-app-config
