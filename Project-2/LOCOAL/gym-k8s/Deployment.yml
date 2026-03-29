@@ -9,12 +9,12 @@ metadata:
 spec:
   replicas: 1
   selector:
-    app: gym-app
+    matchLabels:
+      app: gym-app
 template:
   metadata:
     labels:
-      matchLabels:
-        app: gym-app
+      app: gym-app
   spec:
     containers:
       - name: gym-app-container
@@ -28,4 +28,4 @@ template:
             memory: 150Mi
         envFrom:
           - configMapRef:
-              name: gym-app-config
+            name: gym-app-config
