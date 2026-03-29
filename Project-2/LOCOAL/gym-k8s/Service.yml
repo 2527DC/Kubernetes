@@ -5,8 +5,8 @@ metadata:
   namespace: gym-dev
 spec:
   type: ClusterIP
-selector:
-  app: gym-app
+  selector:
+    app: gym-app
   ports:
     - port: 80
       targetPort: 8001
