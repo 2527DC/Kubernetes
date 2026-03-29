@@ -11,21 +11,21 @@ spec:
   selector:
     matchLabels:
       app: gym-app
-template:
-  metadata:
-    labels:
-      app: gym-app
-  spec:
-    containers:
-      - name: gym-app-container
-        image: chethan2527/gym:v1
-        resources:
-          requests:
-            cpu: 250m
-            memory: 100Mi
-          limits:
-            cpu: 400m
-            memory: 150Mi
-        envFrom:
-          - configMapRef:
-              name: gym-app-config
+  template:
+    metadata:
+      labels:
+        app: gym-app
+    spec:
+      containers:
+        - name: gym-app-container
+          image: chethan2527/gym:v1
+          resources:
+            requests:
+              cpu: 250m
+              memory: 100Mi
+            limits:
+              cpu: 400m
+              memory: 150Mi
+          envFrom:
+            - configMapRef:
+                name: gym-app-config
