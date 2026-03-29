@@ -5,10 +5,10 @@ metadata:
   name: ets-user-service-svc
   namespace: ets-dev
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: ets-user-service
   ports:
     - port: 80
       targetPort: 4000
-      nodePort: 30080
+      protocol: TCP
