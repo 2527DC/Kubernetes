@@ -1,0 +1,162 @@
+# Terraform Variables Example
+# Copy this file to terraform.tfvars and customize for your needs
+
+##############################################################################
+# AWS Configuration
+##############################################################################
+
+aws_region = "us-east-1"
+
+##############################################################################
+# Project Configuration
+##############################################################################
+
+# Project name used as prefix for all resources
+project_name = "eks-prod"
+
+# Environment name (prod, staging, dev, etc.)
+environment = "prod"
+
+##############################################################################
+# VPC Configuration
+##############################################################################
+
+# VPC CIDR block
+# Make sure this doesn't overlap with existing VPCs or corporate network
+vpc_cidr = "10.0.0.0/16"
+
+# Availability zones (minimum 2 for HA)
+# Note: Must exist in the specified region
+availability_zones = ["us-east-1a", "us-east-1b"]
+
+# Public subnet CIDR blocks (for NAT Gateway and Load Balancers)
+# One subnet per availability zone
+public_subnet_cidrs = ["10.0.1.0/24", "10.0.2.0/24"]
+
+# Private subnet CIDR blocks (for EKS nodes)
+# One subnet per availability zone
+private_subnet_cidrs = ["10.0.10.0/24", "10.0.11.0/24"]
+
+##############################################################################
+# NAT Gateway Configuration
+##############################################################################
+
+# Enable NAT Gateway for private subnet internet access
+enable_nat_gateway = true
+
+# Use a single NAT Gateway for cost optimization (production should use false)
+# true = single NAT in the first AZ (cost savings, single point of failure)
+# false = one NAT per AZ (HA, higher cost)
+single_nat_gateway = false
+
+##############################################################################
+# EKS Cluster Configuration
+##############################################################################
+
+# EKS cluster name
+eks_cluster_name = "eks-production-cluster"
+
+# Kubernetes version
+# Options: 1.24, 1.25, 1.26, 1.27, 1.28, 1.29
+eks_cluster_version = "1.29"
+
+##############################################################################
+# Node Group Configuration
+##############################################################################
+
+# Minimum number of nodes - should be at least 1
+node_min_size = 2
+
+# Desired number of nodes - this is the starting number
+node_desired_size = 3
+
+# Maximum number of nodes - cluster autoscaler won't exceed this
+node_max_size = 5
+
+# Instance families to use for node groups
+# These can be any combination of families
+# Examples:
+#   - General purpose: t3, t3a, m5, m5a, m6i, m7i
+#   - Memory optimized: r5, r6i, r7i
+#   - Compute optimized: c5, c6i, c7i
+#   - Burstable: t3, t3a (good for dev/test)
+# The module will create instances like: t3.medium, t3a.medium, etc.
+node_instance_families = ["t3", "t3a"]
+
+# EBS root volume size in GiB
+# Recommendation:
+#   - Development: 50GB
+#   - Production: 100-200GB
+node_disk_size = 100
+
+##############################################################################
+# Security Configuration
+##############################################################################
+
+# CIDR blocks allowed for inbound HTTPS access to EKS control plane
+# IMPORTANT: Restrict this to your corporate network/VPN in production
+# Examples:
+#   - Current setup (INSECURE): ["0.0.0.0/0"]  # Open to world
+#   - Corporate network: ["203.0.113.0/24"]  # Replace with your network
+#   - Multiple sources: ["203.0.113.0/24", "198.51.100.0/24"]
+#   - Your IP: ["YOUR_IP/32"]
+# WARNING: Using 0.0.0.0/0 exposes your cluster to the internet!
+allowed_inbound_cidrs = ["0.0.0.0/0"]
+
+##############################################################################
+# Tags
+##############################################################################
+
+# Common tags applied to all resources
+# These help with cost allocation, automation, and identification
+tags = {
+  Terraform   = "true"              # Identifies Terraform-managed resources
+  Environment = "production"        # Environment identification
+  Managed_by  = "Terraform"        # Management tool
+  Owner       = "DevOps"           # Team/owner name
+  CostCenter  = "Engineering"      # For cost allocation
+  Project     = "eks-infrastructure" # Project name
+}
+
+##############################################################################
+# Environment Specific Examples
+##############################################################################
+
+# For PRODUCTION use these settings:
+# aws_region          = "us-east-1"
+# project_name        = "eks-prod"
+# environment         = "prod"
+# availability_zones  = ["us-east-1a", "us-east-1b", "us-east-1c"]
+# single_nat_gateway  = false  # HA with one NAT per AZ
+# node_min_size       = 3
+# node_desired_size   = 5
+# node_max_size       = 10
+# node_instance_families = ["m5", "m6i"]
+# node_disk_size      = 200
+# allowed_inbound_cidrs = ["203.0.113.0/24"]  # Your IP/VPN
+
+# For STAGING use these settings:
+# aws_region          = "us-east-1"
+# project_name        = "eks-staging"
+# environment         = "staging"
+# availability_zones  = ["us-east-1a", "us-east-1b"]
+# single_nat_gateway  = true  # Cost optimization
+# node_min_size       = 2
+# node_desired_size   = 3
+# node_max_size       = 5
+# node_instance_families = ["t3", "t3a"]
+# node_disk_size      = 100
+# allowed_inbound_cidrs = ["0.0.0.0/0"]
+
+# For DEVELOPMENT use these settings:
+# aws_region          = "us-east-1"
+# project_name        = "eks-dev"
+# environment         = "dev"
+# availability_zones  = ["us-east-1a", "us-east-1b"]
+# single_nat_gateway  = true  # Save costs
+# node_min_size       = 1
+# node_desired_size   = 2
+# node_max_size       = 3
+# node_instance_families = ["t3"]  # Cheapest option
+# node_disk_size      = 50
+# allowed_inbound_cidrs = ["0.0.0.0/0"]
