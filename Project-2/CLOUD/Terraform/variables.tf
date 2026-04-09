@@ -3,7 +3,7 @@
 variable "aws_region" {
   description = "AWS region for all resources"
   type        = string
-  default     = "us-east-1"
+  default     = "ap-south-1"
 }
 
 variable "project_name" {
@@ -27,7 +27,7 @@ variable "vpc_cidr" {
 variable "availability_zones" {
   description = "List of availability zones (minimum 2 for HA)"
   type        = list(string)
-  default     = ["us-east-1a", "us-east-1b"]
+  default     = ["ap-south-1a", "ap-south-1b"]
 }
 
 variable "public_subnet_cidrs" {
@@ -57,31 +57,31 @@ variable "eks_cluster_version" {
 variable "node_min_size" {
   description = "Minimum number of nodes in the node group"
   type        = number
-  default     = 2
+  default     = 1
 }
 
 variable "node_max_size" {
   description = "Maximum number of nodes in the node group"
   type        = number
-  default     = 5
+  default     = 1
 }
 
 variable "node_desired_size" {
   description = "Desired number of nodes in the node group"
   type        = number
-  default     = 3
+  default     = 1
 }
 
 variable "node_instance_families" {
   description = "List of EC2 instance families for node groups (e.g., t3, m5, c5)"
   type        = list(string)
-  default     = ["t3", "t3a"]
+  default     = ["t2.micro"]
 }
 
 variable "node_disk_size" {
   description = "Disk size in GiB for node root volume"
   type        = number
-  default     = 100
+  default     = 20
 }
 
 variable "allowed_inbound_cidrs" {

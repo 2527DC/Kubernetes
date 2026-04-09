@@ -17,12 +17,12 @@ output "node_group_status" {
 
 output "node_role_arn" {
   description = "IAM role ARN for nodes"
-  value       = aws_iam_role.node_group_role.arn
+  value       = var.node_role_arn
 }
 
 output "node_role_name" {
   description = "IAM role name for nodes"
-  value       = aws_iam_role.node_group_role.name
+  value       = var.node_role_name
 }
 
 output "launch_template_id" {
@@ -30,7 +30,7 @@ output "launch_template_id" {
   value       = aws_launch_template.eks_nodes.id
 }
 
-output "asg_name" {
-  description = "Name of the Auto Scaling Group"
-  value       = data.aws_eks_node_group.node_group.asg_tags[0].autoscaling_group_name
+output "node_group_name" {
+  description = "Name of the node group"
+  value       = aws_eks_node_group.main.node_group_name
 }

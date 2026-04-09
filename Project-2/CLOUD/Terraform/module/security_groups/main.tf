@@ -30,7 +30,22 @@ resource "aws_vpc_security_group_ingress_rule" "eks_cp_https_external" {
   }
 }
 
-# Allow inbound from worker nodes
+# Allow inbound from worker nodes (Kubelet to API server)
+resource "aws_vpc_security_group_ingress_rule" "eks_cp_https_from_workers" {
+  security_group_id = aws_security_group.eks_control_plane.id
+
+  description              = "Allow HTTPS communication from worker nodes"
+  from_port                = 443
+  to_port                  = 443
+  ip_protocol              = "tcp"
+  referenced_security_group_id = aws_security_group.eks_nodes.id
+
+  tags = {
+    Name = "${var.project_name}-eks-cp-https-from-workers"
+  }
+}
+
+# Allow inbound from worker nodes (other traffic)
 resource "aws_vpc_security_group_ingress_rule" "eks_cp_from_workers" {
   security_group_id = aws_security_group.eks_control_plane.id
 
@@ -50,8 +65,6 @@ resource "aws_vpc_security_group_egress_rule" "eks_cp_egress" {
   security_group_id = aws_security_group.eks_control_plane.id
 
   description = "Allow all outbound traffic"
-  from_port   = 0
-  to_port     = 0
   ip_protocol = "-1"
   cidr_ipv4   = "0.0.0.0/0"
 
@@ -124,8 +137,6 @@ resource "aws_vpc_security_group_egress_rule" "eks_nodes_egress" {
   security_group_id = aws_security_group.eks_nodes.id
 
   description = "Allow all outbound traffic"
-  from_port   = 0
-  to_port     = 0
   ip_protocol = "-1"
   cidr_ipv4   = "0.0.0.0/0"
 

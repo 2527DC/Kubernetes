@@ -73,7 +73,8 @@ module "node_groups" {
   cluster_version        = var.eks_cluster_version
   node_group_name        = "primary"
   node_role_arn          = aws_iam_role.node_role.arn
-  subnet_ids             = module.vpc.private_subnet_ids
+  node_role_name          = aws_iam_role.node_role.name
+  subnet_ids             = module.vpc.public_subnet_ids
   security_group_ids     = [module.security_groups.eks_nodes_sg_id]
   desired_size           = var.node_desired_size
   min_size               = var.node_min_size

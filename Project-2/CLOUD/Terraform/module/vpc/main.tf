@@ -121,17 +121,20 @@ resource "aws_route_table" "private" {
   count  = length(var.private_subnet_cidrs)
   vpc_id = aws_vpc.main.id
 
-  route {
-    cidr_block     = "0.0.0.0/0"
-    nat_gateway_id = var.single_nat_gateway ? aws_nat_gateway.main[0].id : aws_nat_gateway.main[count.index].id
-  }
-
   tags = merge(
     var.tags,
     {
       Name = "${var.project_name}-private-rt-${count.index + 1}"
     }
   )
+}
+
+# Private route to NAT Gateway (only if enabled)
+resource "aws_route" "private_nat" {
+  count                  = var.enable_nat_gateway ? length(var.private_subnet_cidrs) : 0
+  route_table_id         = aws_route_table.private[count.index].id
+  destination_cidr_block = "0.0.0.0/0"
+  nat_gateway_id         = var.single_nat_gateway ? aws_nat_gateway.main[0].id : aws_nat_gateway.main[count.index].id
 }
 
 # Associate Private Subnets with Private Route Tables

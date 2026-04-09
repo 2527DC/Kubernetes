@@ -1,56 +1,33 @@
 # Node Groups Module - Main Configuration
 
-# IAM Role for EC2 nodes
-resource "aws_iam_role" "node_group_role" {
-  name_prefix = "${var.project_name}-eks-node-"
-
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Action = "sts:AssumeRole"
-        Effect = "Allow"
-        Principal = {
-          Service = "ec2.amazonaws.com"
-        }
-      }
-    ]
-  })
-
-  tags = merge(
-    var.tags,
-    {
-      Name = "${var.cluster_name}-node-role"
-    }
-  )
-}
-
-# Attach required policies
+# Policy attachments for the passed role
 resource "aws_iam_role_policy_attachment" "eks_worker_node_policy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
-  role       = aws_iam_role.node_group_role.name
+  role       = var.node_role_name
 }
 
 resource "aws_iam_role_policy_attachment" "eks_cni_policy" {
-  policy_arn = "arn:aws:iam::aws:policy/AmazonEK_CNI_Policy"
-  role       = aws_iam_role.node_group_role.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
+  role       = var.node_role_name
 }
 
 resource "aws_iam_role_policy_attachment" "eks_container_registry_policy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
-  role       = aws_iam_role.node_group_role.name
+  role       = var.node_role_name
 }
 
 resource "aws_iam_role_policy_attachment" "eks_ssm_managed_instance_core" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
-  role       = aws_iam_role.node_group_role.name
+  role       = var.node_role_name
 }
+
+# Attachments are handled above.
 
 # EKS Node Group
 resource "aws_eks_node_group" "main" {
   cluster_name    = var.cluster_name
   node_group_name = "${var.cluster_name}-${var.node_group_name}-ng"
-  node_role_arn   = aws_iam_role.node_group_role.arn
+  node_role_arn   = var.node_role_arn
   subnet_ids      = var.subnet_ids
 
   # Scaling configuration
@@ -65,21 +42,16 @@ resource "aws_eks_node_group" "main" {
     max_unavailable_percentage = 25
   }
 
-  # Instance types configuration with mixed instances
-  instance_types = [
-    for family in var.instance_families : "${family}.medium"
-  ]
+  # Instance types configuration
+  instance_types = var.instance_families
 
   # Node group capacity type (ON_DEMAND or SPOT)
   capacity_type = var.capacity_type
 
-  # Disk configuration
-  disk_size = var.disk_size
-
   # Launch template for advanced configuration
   launch_template {
     id      = aws_launch_template.eks_nodes.id
-    version = aws_launch_template.eks_nodes.latest_version_number
+    version = aws_launch_template.eks_nodes.latest_version
   }
 
   # Tags
@@ -140,11 +112,7 @@ resource "aws_launch_template" "eks_nodes" {
     )
   }
 
-  UserData = base64encode(templatefile("${path.module}/user_data.sh", {
-    cluster_name       = var.cluster_name
-    cluster_endpoint   = "" # Will be populated by root module
-    cluster_ca         = "" # Will be populated by root module
-  }))
+  # Removed custom user_data to allow EKS managed node group to handle bootstrapping
 
   tags = merge(
     var.tags,
@@ -152,22 +120,4 @@ resource "aws_launch_template" "eks_nodes" {
       Name = "${var.cluster_name}-lt"
     }
   )
-}
-
-# Auto Scaling Group tags for discovery
-resource "aws_autoscaling_group_tag" "cluster_autoscaler_discovery" {
-  for_each = data.aws_eks_node_group.node_group.asg_tags
-
-  autoscaling_group_name = each.value.autoscaling_group_name
-  tag {
-    key                 = "k8s.io/cluster-autoscaler/${var.cluster_name}"
-    value               = "owned"
-    propagate_at_launch = false
-  }
-}
-
-# Data source to get the Auto Scaling Group from the Node Group
-data "aws_eks_node_group" "node_group" {
-  cluster_name       = var.cluster_name
-  node_group_name    = aws_eks_node_group.main.node_group_name
 }

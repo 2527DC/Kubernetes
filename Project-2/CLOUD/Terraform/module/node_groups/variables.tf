@@ -21,6 +21,11 @@ variable "node_role_arn" {
   type        = string
 }
 
+variable "node_role_name" {
+  description = "Name of IAM role for nodes"
+  type        = string
+}
+
 variable "subnet_ids" {
   description = "List of subnet IDs for the node group"
   type        = list(string)
@@ -34,31 +39,31 @@ variable "security_group_ids" {
 variable "desired_size" {
   description = "Desired number of nodes"
   type        = number
-  default     = 3
+  default     = 1
 }
 
 variable "min_size" {
   description = "Minimum number of nodes"
   type        = number
-  default     = 2
+  default     = 1
 }
 
 variable "max_size" {
   description = "Maximum number of nodes"
   type        = number
-  default     = 5
+  default     = 1
 }
 
 variable "instance_families" {
   description = "List of instance families to use (e.g., t3, m5, c5)"
   type        = list(string)
-  default     = ["t3", "t3a"]
+  default     = ["t2.micro"]
 }
 
 variable "disk_size" {
   description = "Root volume size in GB"
   type        = number
-  default     = 100
+  default     = 20
 }
 
 variable "capacity_type" {
